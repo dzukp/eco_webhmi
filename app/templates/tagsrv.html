@@ -21,6 +21,7 @@
     <tr class={% if module.ok %} "table-success" {% else %} "table-danger" {% endif %}>
         <td>{{module.name}}</td>
         <td>{% if module.last_ok > 999999 %} - {% else %} {{module.last_ok}} {% endif %}</td>
+        <td>{{module.tags|join(' ')}}</td>
     </tr>
 {% endfor %}
   </tbody>
