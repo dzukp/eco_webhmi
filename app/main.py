@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 
 from tagsrv import tagsrv_status
 
@@ -19,7 +19,18 @@ def hello_world():
 @app.route('/tagsrv')
 def tag_srv_status():
     ts = tagsrv_status()
-    return render_template('tagsrv.html', ts=ts)
+    return render_template('tagsrv2.html', ts=ts)
+
+
+@app.route('/api/tagsrv')
+def api_tag_srv_status():
+    ts = tagsrv_status()
+    return jsonify(ts)
+
+
+@app.route('/settings')
+def settings():
+    return render_template('settings.html')
 
 
 if __name__ == '__main__':
